@@ -1,23 +1,19 @@
-### CIS 4010 Assignment 2
-## Student Name - Khushi Rajput
-## Student ID - 1103687
-
-## Purpose of this assignment
-* The script developed through this assignment helps automate the creation and deployment of Virtual Machines on Microsoft Azure and Google Cloud Platforms through their respective CLI/SDKs
+## Purpose of this project
+* The script developed through this project helps automate the creation and deployment of Virtual Machines on Microsoft Azure and Google Cloud Platforms through their respective CLI/SDKs
 
 ## Files and Dependencies 
 * This directory contains the `automate.py` script which initiates the Azure and GCP commands for VM creation, by reading in the configuration details from the `Azure.conf` and `GCP.conf` files. 
-* Please review the `Part1AnsPart2SS.pdf` file to view testing screenshots for the script and the answet to Part 1 of the assignment.
+* Please review the `Documentation.pdf` file to view testing screenshots for the script.
 
 ## Preparing to run the script
 * Please ensure you have an Active Microsoft Azure account
-* Ensure you have the Azure CLi installed by running the command `az --version`
+* Ensure you have the Azure CLI installed by running the command `az --version`
 * Run the command `az login` to login to your Azure account through the Azure CLI
 * Ensure relevant permissions have been granted to your account
-* FOr GCP, ensure you have the SDK installed by running the command `gcloud --version`
+* For GCP, ensure you have the SDK installed by running the command `gcloud --version`
 * Run the command `gcloud auth login` to login to your GCP account through the GCP SDK
-* FOr GCP, you need to ensure that a project has been set before any further operations. To do this, you can use the command `gcloud config set project PROJECT_ID`
-* Alternatively, use the command `gcloud init` and follow the initiation procedures to set your account and project
+* For GCP, you need to ensure that a project has been set before any further operations. To do this, you can use the command `gcloud config set project PROJECT_ID`
+* Alternatively, use the command `gcloud init` and follow the initiation procedures to set up your account and project
 
 
 ## How to run the script
@@ -57,8 +53,8 @@ linuxserver01  northamerica-northeast2-a  n1-standard-1               10.188.0.6
 ```
 
 ## Program Flow
-* Upon the succesful creation of the VMs, the script generates documentation files with the date stamps.
-* 2 files are created for the 2 seperate platforms containing information about the VMs on those specific platforms.
+* Upon the successful creation of the VMs, the script generates documentation files with the date stamps.
+* 2 files are created for the 2 separate platforms containing information about the VMs on those specific platforms.
 * These files are named - `Azure_VMCreation_<date_stamp>.txt` and `GCP_VMCreation_<date_stamp>.txt`
 * The program proceeds to rename the config files as `Azure_<date_stamp>.conf` and `GCP_<date_stamp>.conf` to mark the creation of VMs with the specified details. 
 * The documentation files include all relevant VM information including date stamps, VM status, and other config details, for each instance 
@@ -66,12 +62,12 @@ linuxserver01  northamerica-northeast2-a  n1-standard-1               10.188.0.6
 
 ## Notes for the TA - Additional Program Information and Testing Info
 * For Azure VMs on Windows OS, the script will prompt the user to enter their Admin password and then confirm it before proceeding to create the VM.
-* Please ensure the password is atleast 12 characters long and has 3 of the following - 1 lower case character, 1 uppercase character, 1 number, and 1 special character.
+* Please ensure the password is at least 12 characters long and has 3 of the following - 1 lowercase character, 1 uppercase character, 1 number, and 1 special character.
 * The script has checks in place to validate the configuration files for the presence of the minimum required variables for both Azure and GCP platforms, and their correct names as well. 
 * For GCP platforms, the script checks to see if the `name` of the VM instance has only lowercase characters and numbers, as per the specifications.  
-* FOr Azure platforms, the script checks to see if the resource group mentioned exists or not, and if not, it asks the user to create the group through helpful messages.  
+* For Azure platforms, the script checks to see if the resource group mentioned exists or not, and if not, it asks the user to create the group through helpful messages.  
 # Timestamp naming issue - 
-* Windows environment does not allow ':' characters in file names and hence while adding time stamps to file names, I have used the characters ';' and '_' for differentiation. 
+* Windows environment does not allow ':' characters in file names and hence while adding timestamps to file names, I have used the characters ';' and '_' for differentiation. 
 * When creating the 2nd VM instance in the Azure.conf file, I have used the location `canadacentral` instead of the Prof's example (westus3) as I kept getting permission errors to create the VM in that location. 
 
 
@@ -83,4 +79,4 @@ linuxserver01  northamerica-northeast2-a  n1-standard-1               10.188.0.6
 ```
 az vm create --name linuxServer01 --resource-group images --image Ubuntu2204 --location canadacentral --admin-username azureuser --me MyAzureComputer --public-ip-address true --generate-ssh-keys --verbose 
 ```
-* The command will succesfully function without these added variables too. 
+* The command will successfully function without these added variables too. 
